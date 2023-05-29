@@ -14,12 +14,18 @@ const Circle = styled(Box)`
   border-radius: 50%;
 `;
 
+const Button = styled.button.attrs({ href: "#" })`
+  background-color: tomato;
+`;
+
 function App() {
   return (
     <Father>
       <Box bgColor="teal" />
       <Box bgColor="tomato" />
       <Circle bgColor="black" />
+      <Button />
+      <Button as="a" />
     </Father>
   );
 }
