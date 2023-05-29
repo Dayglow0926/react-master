@@ -22,9 +22,14 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: ${(prop) => prop.theme.backgroundColor};
 `;
+const Emoji = styled.span`
+  font-size: 20px;
+`;
+
 const Box = styled.div`
-  background-color: tomato;
+  background-color: ${(prop) => prop.theme.textColor};
   width: 100px;
   height: 100px;
   animation: ${rotateAnimation} 2s linear infinite;
@@ -44,10 +49,6 @@ const Box = styled.div`
   ${Emoji}:hover {
     font-size: 100px;
   }
-`;
-
-const Emoji = styled.span`
-  font-size: 20px;
 `;
 
 function App() {
