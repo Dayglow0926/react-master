@@ -1,32 +1,65 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-const Father = styled.div`
-  display: flex;
+const rotateAnimation = keyframes`
+
+0%{
+transform: rotate(0deg);
+}
+
+50%{
+border-radius: 50%;
+}
+
+100%{
+transform: rotate(360deg);
+border-radius: 0%;
+}
 `;
 
+const Wrapper = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const Box = styled.div`
-  background-color: ${(prop) => prop.bgColor};
+  background-color: tomato;
   width: 100px;
   height: 100px;
+  animation: ${rotateAnimation} 2s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    font-size: 20px;
+    &:hover {
+      font-size: 50px;
+    }
+    &:active {
+      opacity: 0;
+    }
+  }
+  ${Emoji}:hover {
+    font-size: 100px;
+  }
 `;
 
-const Circle = styled(Box)`
-  border-radius: 50%;
-`;
-
-const Button = styled.button.attrs({ href: "#" })`
-  background-color: tomato;
+const Emoji = styled.span`
+  font-size: 20px;
 `;
 
 function App() {
   return (
-    <Father>
-      <Box bgColor="teal" />
-      <Box bgColor="tomato" />
-      <Circle bgColor="black" />
-      <Button />
-      <Button as="a" />
-    </Father>
+    <Wrapper>
+      <Box>
+        <span>😚</span>
+      </Box>
+      <Box>
+        <Emoji>🥸</Emoji>
+      </Box>
+    </Wrapper>
   );
 }
 
