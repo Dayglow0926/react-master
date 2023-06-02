@@ -62,6 +62,12 @@ body {
 }
 a {
   text-decoration:none;
+  color: inherit;
+}
+
+#root {
+display: flex;
+justify-content: center;
 }
 `;
 
