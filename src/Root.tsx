@@ -1,8 +1,11 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, RouterProvider } from "react-router-dom";
 import Router from "./Router";
 import Header from "./components/Header";
-import { createGlobalStyle } from "styled-components";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { darkTheme, lightTheme } from "./theme";
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "./atoms";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -74,11 +77,15 @@ justify-content: center;
 `;
 
 function App() {
+  const isDark = useRecoilValue(isDarkAtom);
+
   return (
     <>
-      <GlobalStyle />
-      <Outlet context={{ darkMode: true }} />
-      <ReactQueryDevtools initialIsOpen={true} />
+      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+        <GlobalStyle />
+        <Outlet />
+        <ReactQueryDevtools initialIsOpen={true} />
+      </ThemeProvider>
     </>
   );
 }

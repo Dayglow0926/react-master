@@ -2,6 +2,8 @@ import { useQuery } from "react-query";
 import { fetchCoinHistory } from "../api";
 import { useOutletContext } from "react-router-dom";
 import ApexChart from "react-apexcharts";
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "../atoms";
 
 interface IHistorical {
   time_open: string;
@@ -22,8 +24,10 @@ function Chart() {
   const { isLoading, data } = useQuery<IHistorical[]>(
     ["ohlcv", coinId],
     () => fetchCoinHistory(coinId),
-    { refetchInterval: 1000 }
+    { refetchInterval: 3600000 }
   );
+
+  const isDark = useRecoilValue(isDarkAtom);
 
   return (
     <div>

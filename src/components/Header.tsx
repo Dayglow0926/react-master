@@ -5,18 +5,7 @@ function Header() {
   const onAboutClick = () => {
     navigate("/about");
   };
-  return (
-    <header>
-      <ul>
-        <li>
-          <Link to={"/"}>Home</Link>
-        </li>
-        <li>
-          <button onClick={onAboutClick}>About</button>
-        </li>
-      </ul>
-    </header>
-  );
+  return <header></header>;
 }
 
 export default Header;
